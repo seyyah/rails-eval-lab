@@ -3,6 +3,7 @@
 class UserDataFetcher
   def call
     users = User.where(active: true)
+                .includes(:profile, posts: :comments)
 
     users.map do |user|
       serialize_user(user)
