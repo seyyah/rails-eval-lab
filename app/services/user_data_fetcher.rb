@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# baseline — no optimization applied 
 class UserDataFetcher
   def call
     users = User.where(active: true)
