@@ -50,4 +50,4 @@ end
 
 gem "faker", "~> 3.6"
 
-gem "rspec-rails", "~> 8.0", :groups => [:development, :test]
+gem "rspec-rails", "~> 8.0", groups: [ :development, :test ]
