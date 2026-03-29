@@ -34,7 +34,7 @@ query_count = 0
 subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |*args|
   event = ActiveSupport::Notifications::Event.new(*args)
   # Ignore schema and transaction queries
-  unless event.payload[:name] == 'SCHEMA' || ['BEGIN', 'COMMIT'].include?(event.payload[:sql])
+  unless event.payload[:name] == 'SCHEMA' || [ 'BEGIN', 'COMMIT' ].include?(event.payload[:sql])
     query_count += 1
   end
 end

@@ -58,7 +58,7 @@ else
 end
 
 # --- Rank: score desc, then queries asc ---
-entries.sort_by! { |e| [-e[:score], e[:queries]] }
+entries.sort_by! { |e| [ -e[:score], e[:queries] ] }
 
 medal = %w[🥇 🥈 🥉]
 rows = entries.each_with_index.map do |e, i|
