@@ -30,12 +30,12 @@ class CreateRunLogs < ActiveRecord::Migration[8.0]
 
     # One iteration number per user per challenge. No gaps, no duplicates.
     add_index :run_logs,
-              [:user_id, :challenge_id, :iteration_number],
+              [ :user_id, :challenge_id, :iteration_number ],
               unique: true,
               name: "idx_run_logs_user_challenge_iteration"
 
     # Fast lookups for leaderboard and personal history.
-    add_index :run_logs, [:challenge_id, :total_score], order: { total_score: :desc },
+    add_index :run_logs, [ :challenge_id, :total_score ], order: { total_score: :desc },
               name: "idx_run_logs_leaderboard"
   end
 end

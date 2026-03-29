@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'benchmark'
+require "benchmark"
 
 class Scorer
   def self.run(challenge)
@@ -8,10 +8,10 @@ class Scorer
 
     ignored_sql = %w[BEGIN COMMIT SAVEPOINT RELEASE\ SAVEPOINT ROLLBACK].freeze
 
-    subscriber = ActiveSupport::Notifications.subscribe('sql.active_record') do |*args|
+    subscriber = ActiveSupport::Notifications.subscribe("sql.active_record") do |*args|
       event = ActiveSupport::Notifications::Event.new(*args)
       # Ignore schema and transaction queries
-      unless event.payload[:name] == 'SCHEMA' || ignored_sql.any? { |q| event.payload[:sql].start_with?(q) }
+      unless event.payload[:name] == "SCHEMA" || ignored_sql.any? { |q| event.payload[:sql].start_with?(q) }
         query_count += 1
       end
     end

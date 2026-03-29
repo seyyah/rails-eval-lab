@@ -39,7 +39,7 @@ user_count.times do |i|
     post = user.posts.create!(
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraphs(number: 2).join("\n\n"),
-      published: [true, false].sample
+      published: [ true, false ].sample
     )
 
     rand(1..3).times do
