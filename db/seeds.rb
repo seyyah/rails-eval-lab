@@ -1,16 +1,29 @@
-require 'faker'
+# frozen_string_literal: true
 
-puts "Biraz zaman alabilir, #{200} kullanıcı ve ilişkileri (profile, post, comment) oluşturuluyor..."
-200.times do
+require "faker"
+
+# Fixed seed for deterministic data generation.
+# Every student gets the same dataset → scores are comparable.
+Faker::Config.random = Random.new(42)
+srand(42)
+
+USER_COUNT = 200
+ACTIVE_RATIO = 0.5 # exactly 100 active users
+
+puts "Generating #{USER_COUNT} users with profiles, posts, and comments..."
+
+USER_COUNT.times do |i|
+  is_active = i < (USER_COUNT * ACTIVE_RATIO) # first 100 active, rest inactive
+
   user = User.create!(
     name: Faker::Name.name,
-    email: Faker::Internet.unique.email,
-    active: [true, false].sample
+    email: "user#{i + 1}@dojo.test",
+    active: is_active
   )
-  
+
   Profile.create!(
-    user: user, 
-    bio: Faker::Lorem.paragraph, 
+    user: user,
+    bio: Faker::Lorem.paragraph,
     avatar_url: Faker::Avatar.image
   )
 
@@ -20,7 +33,7 @@ puts "Biraz zaman alabilir, #{200} kullanıcı ve ilişkileri (profile, post, co
       body: Faker::Lorem.paragraphs(number: 2).join("\n\n"),
       published: [true, false].sample
     )
-    
+
     rand(1..3).times do
       post.comments.create!(
         author_name: Faker::Name.name,
@@ -31,13 +44,23 @@ puts "Biraz zaman alabilir, #{200} kullanıcı ve ilişkileri (profile, post, co
 end
 
 puts "Seeded #{User.count} users, #{Profile.count} profiles, #{Post.count} posts, #{Comment.count} comments"
+puts "Active users: #{User.where(active: true).count}"
 
-Challenge.create!(
-  slug: "n_plus_one_dashboard",
-  title: "Dashboard N+1 Katliamı",
-  description: "Kullanıcı dashboard'u binlerce SQL sorgusu çalıştırıyor. Düzelt.",
-  baseline_queries: 1051,
-  baseline_time_ms: 1150.00,
-  credit_cost: 5
+# --- Challenge baseline ---
+# After seeding, run Scorer once to capture the actual baseline.
+challenge = Challenge.find_or_create_by!(slug: "n_plus_one_dashboard") do |c|
+  c.title = "Dashboard N+1 Katliamı"
+  c.description = "Kullanıcı dashboard'u binlerce SQL sorgusu çalıştırıyor. Düzelt."
+  c.baseline_queries = 1  # placeholder, updated below
+  c.baseline_time_ms = 1  # placeholder, updated below
+  c.credit_cost = 5
+end
+
+puts "Measuring baseline..."
+baseline = Scorer.run(challenge)
+challenge.update!(
+  baseline_queries: baseline[:queries],
+  baseline_time_ms: baseline[:time]
 )
-puts "Seeded 1 Challenge (baseline: 1051 queries, 1150ms)."
+puts "Baseline measured: #{baseline[:queries]} queries, #{baseline[:time].round(2)}ms"
+puts "Challenge '#{challenge.slug}' ready."
