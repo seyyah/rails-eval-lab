@@ -44,7 +44,7 @@ module EvaluationEngine
         query_reduction_pct: qr.round(2),
         time_reduction_pct:  tr.round(2),
         stability_score:     ss.round(4),
-        total_score:         [total, 0.0].max.round(2)
+        total_score:         [ total, 0.0 ].max.round(2)
       )
     end
 
@@ -70,8 +70,8 @@ module EvaluationEngine
       time_delta  = (@time - @previous_run.execution_time_ms.to_f).abs
 
       # Normalize deltas relative to baseline so different challenges are comparable.
-      norm_q = query_delta / [@challenge.baseline_queries, 1].max
-      norm_t = time_delta  / [@challenge.baseline_time_ms.to_f, 1.0].max
+      norm_q = query_delta / [ @challenge.baseline_queries, 1 ].max
+      norm_t = time_delta  / [ @challenge.baseline_time_ms.to_f, 1.0 ].max
 
       # Decay function: 1/(1+delta). Fast drop for large deltas, smooth near 0.
       q_stability = 1.0 / (1.0 + norm_q)

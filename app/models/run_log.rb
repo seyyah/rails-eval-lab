@@ -14,7 +14,7 @@ class RunLog < ApplicationRecord
   # --- Validations ---
   validates :iteration_number, presence: true,
                                numericality: { only_integer: true, greater_than: 0 },
-                               uniqueness: { scope: [:user_id, :challenge_id] }
+                               uniqueness: { scope: [ :user_id, :challenge_id ] }
 
   validates :strategy_note, presence: true,
                             length: { minimum: 20, message: "must explain your strategy (min 20 chars)" }
