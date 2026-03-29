@@ -109,9 +109,9 @@ time_row = reduction_row(
 )
 
 top_emoji = if score.total_score >= 70 then "🏆"
-            elsif score.total_score >= 40 then "⚡"
-            else "💡"
-            end
+elsif score.total_score >= 40 then "⚡"
+else "💡"
+end
 
 comment = <<~MD
   ## #{top_emoji} Evaluation Result — @#{student}
