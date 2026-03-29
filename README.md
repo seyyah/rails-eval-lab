@@ -1,5 +1,7 @@
 # 🥋 Engineering Dojo
 
+![Engineering Dojo — Rails Performance Challenge](docs/motivation.png)
+
 **Karpathy'nin [autoresearch](https://github.com/karpathy/autoresearch) pattern'inden ilham alan, Rails için performans optimizasyon dojo'su.**
 
 Kasıtlı olarak kötü yazılmış bir Rails servisini optimize ediyorsun. Her denemende SQL sorgu sayısı ve çalışma süresi ölçülüyor, puanlanıyor ve kalıcı olarak kaydediliyor. **100 kredin var, her deneme 5 kredi. 20 hakkın var — sonra sistem seni kilitliyor.**
