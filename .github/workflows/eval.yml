@@ -16,6 +16,15 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      - name: Debug token permissions
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
+          curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+               "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments" \
+               | jq .length
+
       # 1. Checkout MAIN — source of truth for all code except user_data_fetcher.rb
       - name: Checkout main
         uses: actions/checkout@v4
@@ -92,8 +101,3 @@ jobs:
           git add LEADERBOARD.md
           git diff --cached --quiet || git commit -m "leaderboard: ${{ github.event.pull_request.user.login }} (#${{ github.event.pull_request.number }})"
           git push origin HEAD:leaderboard
-
-      - name: Debug token permissions
-        run: |
-          echo "Actor: ${{ github.actor }}"
-          echo "Event: ${{ github.event_name }}"
