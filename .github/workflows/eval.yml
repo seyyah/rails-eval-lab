@@ -33,7 +33,7 @@ jobs:
 
       # 1. Checkout MAIN — source of truth for all code except user_data_fetcher.rb
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0   # needed for git show pr-head and git worktree
