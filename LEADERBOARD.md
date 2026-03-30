@@ -1,12 +1,12 @@
 # Leaderboard — Dashboard N+1 Katliamı
 
-> Son güncelleme: 2026-03-30 09:29 UTC
+> Son güncelleme: 2026-03-30 22:14 UTC
 > Ölçüm: GitHub Actions `ubuntu-latest` · 3 çalıştırmanın medyanı
 > Her öğrencinin **en iyi** skoru gösterilir
 
 | Rank | Öğrenci | Queries | Süre (ms) | Skor (/90) | PR | Tarih |
 |------|---------|---------|-----------|------------|-----|-------|
-| 🥇 | @busra-nur-yuksel | 1245 | 652.3 | **0.52** | #14 | 2026-03-30 |
+| 🥇 | @dependabot[bot] | 1199 | 626.6 | **3.54** | #15 | 2026-03-30 |
 
 ---
 
