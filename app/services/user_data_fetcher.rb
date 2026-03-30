@@ -2,7 +2,7 @@
 
 class UserDataFetcher
   def call
-    users = User.where(active: true)
+    users = User.where(active: false)
 
     users.map do |user|
       serialize_user(user)
