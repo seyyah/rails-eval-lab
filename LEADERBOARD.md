@@ -1,11 +1,12 @@
 # Leaderboard — Dashboard N+1 Katliamı
 
-> Son güncelleme: 2026-03-29 21:22 UTC
+> Son güncelleme: 2026-03-30 07:01 UTC
 > Ölçüm: GitHub Actions `ubuntu-latest` · 3 çalıştırmanın medyanı
 > Her öğrencinin **en iyi** skoru gösterilir
 
 | Rank | Öğrenci | Queries | Süre (ms) | Skor (/90) | PR | Tarih |
 |------|---------|---------|-----------|------------|-----|-------|
+| 🥇 | @keremurat | 1199 | 551.3 | **6.24** | #11 | 2026-03-30 |
 
 ---
 
