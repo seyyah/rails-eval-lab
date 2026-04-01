@@ -2,7 +2,8 @@
 
 class UserDataFetcher
   def call
-    users = User.where(active: true)
+    # 1:1 ilişkiler için eager_load (JOIN ile hızlandır), 1:N ilişkiler için preload (Kartezyen çarpımı engelle)
+    users = User.eager_load(:profile).preload(posts: :comments).where(active: true)
 
     users.map do |user|
       serialize_user(user)
