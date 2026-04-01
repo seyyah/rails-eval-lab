@@ -2,7 +2,8 @@
 
 class UserDataFetcher
   def call
-    users = User.where(active: true)
+    # N+1 problemini çözmek için profile ve nested olan posts -> comments ilişkilerini önceden yüklüyoruz.
+    users = User.includes(:profile, posts: :comments).where(active: true)
 
     users.map do |user|
       serialize_user(user)
