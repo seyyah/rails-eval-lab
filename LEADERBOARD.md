@@ -1,12 +1,12 @@
 # Leaderboard — Dashboard N+1 Katliamı
 
-> Son güncelleme: 2026-04-01 13:38 UTC
+> Son güncelleme: 2026-04-01 17:52 UTC
 > Ölçüm: GitHub Actions `ubuntu-latest` · 3 çalıştırmanın medyanı
 > Her öğrencinin **en iyi** skoru gösterilir
 
 | Rank | Öğrenci | Queries | Süre (ms) | Skor (/90) | PR | Tarih |
 |------|---------|---------|-----------|------------|-----|-------|
-| 🥇 | @AhmetYunusDemirci | 3 | 119.2 | **84.77** | #17 | 2026-04-01 |
+| 🥇 | @ParzivalSANN | 4 | 105.1 | **85.21** | #18 | 2026-04-01 |
 
 ---
 
