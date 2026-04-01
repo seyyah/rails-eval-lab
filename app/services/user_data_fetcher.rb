@@ -2,7 +2,8 @@
 
 class UserDataFetcher
   def call
-    users = User.where(active: true)
+    # DEĞİŞİKLİK BURADA: includes ile tüm ilişkili verileri tek seferde çekiyoruz.
+    users = User.includes(:profile, posts: :comments).where(active: true)
 
     users.map do |user|
       serialize_user(user)
