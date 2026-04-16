@@ -97,7 +97,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
-    faker (3.6.1)
+    faker (3.8.0)
       i18n (>= 1.8.11, < 2)
     fugit (1.12.1)
       et-orbi (~> 1.4)
@@ -319,7 +319,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
-  faker (~> 3.6)
+  faker (~> 3.8)
   kamal
   puma (>= 5.0)
   rails (~> 8.0.0)
