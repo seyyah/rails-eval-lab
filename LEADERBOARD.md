@@ -1,12 +1,12 @@
 # Leaderboard — Dashboard N+1 Katliamı
 
-> Son güncelleme: 2026-05-05 01:06 UTC
+> Son güncelleme: 2026-05-05 21:28 UTC
 > Ölçüm: GitHub Actions `ubuntu-latest` · 3 çalıştırmanın medyanı
 > Her öğrencinin **en iyi** skoru gösterilir
 
 | Rank | Öğrenci | Queries | Süre (ms) | Skor (/90) | PR | Tarih |
 |------|---------|---------|-----------|------------|-----|-------|
-| 🥇 | @dependabot[bot] | 1199 | 544.3 | **4.66** | #28 | 2026-05-05 |
+| 🥇 | @dependabot[bot] | 1199 | 487.2 | **6.57** | #29 | 2026-05-05 |
 
 ---
 
